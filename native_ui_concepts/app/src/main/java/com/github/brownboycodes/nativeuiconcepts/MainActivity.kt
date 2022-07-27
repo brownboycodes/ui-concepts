@@ -47,6 +47,12 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+    val pics : Map<String,Int> = mapOf<String,Int>(
+         "Philip Davis" to R.mipmap.twitter_profile_pic_of_philipcdavis,
+        "Cuberto" to R.mipmap.twitter_profile_pic_of_cuberto,
+        "Janum Trivedi" to R.mipmap.twitter_profile_pic_of_janumtrivedi
+    )
+
     data class UIConcepts(val uiName:String,val route:String)
     data class FlutterUIInfo(val author: String, val uiConcepts:List<UIConcepts>)
     val concepts= listOf<FlutterUIInfo>(
@@ -56,6 +62,15 @@ class MainActivity : ComponentActivity() {
                 UIConcepts(
                     uiName = "Bottom Sheet Transition",
                     route = "/bottom-sheet-transition"
+                )
+            )
+        ),
+        FlutterUIInfo(
+            author = "Cuberto",
+            uiConcepts = listOf<UIConcepts>(
+                UIConcepts(
+                    uiName = "Cuberto Liquid Transition",
+                    route = "/cuberto-liquid-transition"
                 )
             )
         ),
@@ -97,33 +112,23 @@ class MainActivity : ComponentActivity() {
     @Composable
     fun FlutterUIListTile(flutterUIInfo: FlutterUIInfo) {
         Row(
-            horizontalArrangement = Arrangement.Center,
+            horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically,
             modifier = Modifier
                 .wrapContentHeight()
                 .background(
-
-//                    brush = Brush.verticalGradient(
-//
-//                        colors = listOf<Color>(
-////                            Color(0XFF2C5364),
-////                            Color(0xff203A43),
-////                            Color(0xff0F2027)
-//                        Color(0xffFFFFFF),Color(0xffECE9E6)
-//                        )
-//
-//                    )
                     color = Color.White, shape = RoundedCornerShape(24)
 
                 )
-                .padding(10.dp)
+                .padding(5.dp)
                 .shadow(elevation = 1.618.dp, shape = RoundedCornerShape(24))
                 .fillMaxWidth(fraction = 0.84f)
                 .clickable(onClick = { openFlutterApp() })
         ) {
+            Spacer(modifier = Modifier.width(10.dp))
             Image(
-                painter = painterResource(id = R.mipmap.twitter_profile_pic_of_philipcdavis),
-                contentDescription = "profile picture of philip davis",
+                painter = painterResource(id = pics[flutterUIInfo.author]!!),
+                contentDescription = "profile picture",
                 modifier = Modifier
                     .size(56.dp)
                     .clip(

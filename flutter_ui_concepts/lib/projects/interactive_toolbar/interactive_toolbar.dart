@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class InteractiveToolbar extends StatefulWidget {
   const InteractiveToolbar({
     Key? key,
@@ -19,7 +18,6 @@ class _InteractiveToolbarState extends State<InteractiveToolbar> {
     MenuItems(
         name: 'draw',
         backgroundColor: Colors.deepPurple.shade400,
-
         icon: 'https://cdn-icons-png.flaticon.com/512/7693/7693434.png'),
     const MenuItems(
         name: 'lasso',
@@ -226,7 +224,7 @@ class _MenuItemsState extends State<MenuItems> {
         curve: Curves.decelerate,
         height: 70,
         width: w,
-        margin: const EdgeInsets.symmetric(horizontal: 8,vertical: 0),
+        margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 0),
         padding: const EdgeInsets.all(16),
         decoration: BoxDecoration(
             color: widget.backgroundColor,
@@ -252,5 +250,35 @@ class _MenuItemsState extends State<MenuItems> {
         ),
       ),
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print("initState called");
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    print("didChangeDependencies called");
+  }
+
+  @override
+  void didUpdateWidget(covariant MenuItems oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    print("didUpdateWidget called");
+  }
+
+  @override
+  void deactivate() {
+    print("deactivate called");
+    super.deactivate();
+  }
+
+  @override
+  void dispose() {
+    print("dispose called");
+    super.dispose();
   }
 }
